@@ -28,75 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnNewStudent = new System.Windows.Forms.Button();
             this.btnEntry = new System.Windows.Forms.Button();
-            this.chkFemale = new System.Windows.Forms.CheckBox();
-            this.chkMale = new System.Windows.Forms.CheckBox();
-            this.lblGender = new System.Windows.Forms.Label();
             this.lblNationalCode = new System.Windows.Forms.Label();
             this.lblLastName = new System.Windows.Forms.Label();
             this.lblFirstName = new System.Windows.Forms.Label();
             this.txtNationalCode = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.txtFirstName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtStudentCode = new System.Windows.Forms.TextBox();
+            this.cbxGrade = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // btnCancel
+            // btnNewStudent
             // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(165, 197);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(142, 35);
-            this.btnCancel.TabIndex = 7;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnNewStudent.Location = new System.Drawing.Point(104, 228);
+            this.btnNewStudent.Name = "btnNewStudent";
+            this.btnNewStudent.Size = new System.Drawing.Size(183, 35);
+            this.btnNewStudent.TabIndex = 6;
+            this.btnNewStudent.Text = "Entry New Student";
+            this.btnNewStudent.UseVisualStyleBackColor = true;
+            this.btnNewStudent.Click += new System.EventHandler(this.btnNewStudent_Click);
             // 
             // btnEntry
             // 
-            this.btnEntry.Location = new System.Drawing.Point(8, 197);
+            this.btnEntry.Location = new System.Drawing.Point(12, 228);
             this.btnEntry.Name = "btnEntry";
-            this.btnEntry.Size = new System.Drawing.Size(142, 35);
-            this.btnEntry.TabIndex = 6;
-            this.btnEntry.Text = "Entry";
+            this.btnEntry.Size = new System.Drawing.Size(86, 35);
+            this.btnEntry.TabIndex = 5;
+            this.btnEntry.Text = "Entry ";
             this.btnEntry.UseVisualStyleBackColor = true;
             this.btnEntry.Click += new System.EventHandler(this.btnEntry_Click);
-            // 
-            // chkFemale
-            // 
-            this.chkFemale.AutoSize = true;
-            this.chkFemale.Location = new System.Drawing.Point(14, 162);
-            this.chkFemale.Name = "chkFemale";
-            this.chkFemale.Size = new System.Drawing.Size(99, 29);
-            this.chkFemale.TabIndex = 5;
-            this.chkFemale.Text = "Female";
-            this.chkFemale.UseVisualStyleBackColor = true;
-            this.chkFemale.Click += new System.EventHandler(this.chkFemale_Click);
-            // 
-            // chkMale
-            // 
-            this.chkMale.AutoSize = true;
-            this.chkMale.Location = new System.Drawing.Point(14, 127);
-            this.chkMale.Name = "chkMale";
-            this.chkMale.Size = new System.Drawing.Size(77, 29);
-            this.chkMale.TabIndex = 4;
-            this.chkMale.Text = "Male";
-            this.chkMale.UseVisualStyleBackColor = true;
-            this.chkMale.Click += new System.EventHandler(this.chkMale_Click);
-            // 
-            // lblGender
-            // 
-            this.lblGender.AutoSize = true;
-            this.lblGender.Location = new System.Drawing.Point(169, 144);
-            this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(66, 25);
-            this.lblGender.TabIndex = 33;
-            this.lblGender.Text = "Gnder";
             // 
             // lblNationalCode
             // 
             this.lblNationalCode.AutoSize = true;
-            this.lblNationalCode.Location = new System.Drawing.Point(168, 92);
+            this.lblNationalCode.Location = new System.Drawing.Point(168, 94);
             this.lblNationalCode.Name = "lblNationalCode";
             this.lblNationalCode.Size = new System.Drawing.Size(131, 25);
             this.lblNationalCode.TabIndex = 32;
@@ -105,7 +74,7 @@
             // lblLastName
             // 
             this.lblLastName.AutoSize = true;
-            this.lblLastName.Location = new System.Drawing.Point(168, 52);
+            this.lblLastName.Location = new System.Drawing.Point(168, 54);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(101, 25);
             this.lblLastName.TabIndex = 31;
@@ -122,7 +91,7 @@
             // 
             // txtNationalCode
             // 
-            this.txtNationalCode.Location = new System.Drawing.Point(13, 89);
+            this.txtNationalCode.Location = new System.Drawing.Point(13, 91);
             this.txtNationalCode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNationalCode.Name = "txtNationalCode";
             this.txtNationalCode.Size = new System.Drawing.Size(148, 30);
@@ -130,7 +99,7 @@
             // 
             // txtLastName
             // 
-            this.txtLastName.Location = new System.Drawing.Point(13, 49);
+            this.txtLastName.Location = new System.Drawing.Point(13, 51);
             this.txtLastName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(148, 30);
@@ -144,20 +113,60 @@
             this.txtFirstName.Size = new System.Drawing.Size(148, 30);
             this.txtFirstName.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(168, 174);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(128, 25);
+            this.label1.TabIndex = 36;
+            this.label1.Text = "StudentCode";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(168, 134);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 25);
+            this.label2.TabIndex = 35;
+            this.label2.Text = "Grade";
+            // 
+            // txtStudentCode
+            // 
+            this.txtStudentCode.Location = new System.Drawing.Point(13, 171);
+            this.txtStudentCode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtStudentCode.Name = "txtStudentCode";
+            this.txtStudentCode.Size = new System.Drawing.Size(148, 30);
+            this.txtStudentCode.TabIndex = 4;
+            // 
+            // cbxGrade
+            // 
+            this.cbxGrade.FormattingEnabled = true;
+            this.cbxGrade.Items.AddRange(new object[] {
+            "هفتم",
+            "هشتم",
+            "نهم",
+            "دهم",
+            "یازدهم",
+            "دوازدهم"});
+            this.cbxGrade.Location = new System.Drawing.Point(13, 130);
+            this.cbxGrade.Name = "cbxGrade";
+            this.cbxGrade.Size = new System.Drawing.Size(148, 33);
+            this.cbxGrade.TabIndex = 3;
+            // 
             // FrmManage
             // 
-            this.AcceptButton = this.btnEntry;
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(313, 241);
+            this.ClientSize = new System.Drawing.Size(299, 273);
+            this.Controls.Add(this.cbxGrade);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtStudentCode);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.txtFirstName);
-            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnNewStudent);
             this.Controls.Add(this.btnEntry);
-            this.Controls.Add(this.chkFemale);
-            this.Controls.Add(this.chkMale);
-            this.Controls.Add(this.lblGender);
             this.Controls.Add(this.lblNationalCode);
             this.Controls.Add(this.lblLastName);
             this.Controls.Add(this.lblFirstName);
@@ -166,22 +175,24 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmManage";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.FrmManage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnNewStudent;
         private System.Windows.Forms.Button btnEntry;
-        private System.Windows.Forms.CheckBox chkFemale;
-        private System.Windows.Forms.CheckBox chkMale;
-        private System.Windows.Forms.Label lblGender;
         private System.Windows.Forms.Label lblNationalCode;
         private System.Windows.Forms.Label lblLastName;
         private System.Windows.Forms.Label lblFirstName;
         private System.Windows.Forms.TextBox txtNationalCode;
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.TextBox txtFirstName;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtStudentCode;
+        private System.Windows.Forms.ComboBox cbxGrade;
     }
 }

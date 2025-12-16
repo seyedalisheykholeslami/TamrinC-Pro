@@ -13,12 +13,12 @@ namespace Tamrin_c__pro
     public partial class FrmDisplay : Form
     {
         DataManager dataManager;
-        FrmManage frmManage;
+        
         public FrmDisplay()
         {
             InitializeComponent();
             dataManager = new DataManager();
-            frmManage = new FrmManage();
+             
         }
         private void FillDGV()
         {
@@ -26,7 +26,9 @@ namespace Tamrin_c__pro
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            FrmManage frmManage = new FrmManage();
+            
+            frmManage.InsertUser += FillDGV;
             if (frmManage.ShowDialog() == DialogResult.OK)
                 FillDGV();
         }
@@ -50,11 +52,12 @@ namespace Tamrin_c__pro
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            
             if (dgvStudent.CurrentRow.Index >= 0)
             {
-                frmManage.Student = dgvStudent.CurrentRow.DataBoundItem as Student;
-                if (frmManage.ShowDialog() == DialogResult.OK)
-                    FillDGV();
+                FrmManage frmManage = new FrmManage();
+                frmManage.Information = dgvStudent.CurrentRow.DataBoundItem as Student;
+                frmManage.ShowDialog();
             }
             else 
             {

@@ -35,11 +35,12 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dgvStudent = new System.Windows.Forms.DataGridView();
-            this.GenderType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NationalCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Grade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StudentCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -127,11 +128,12 @@
             // 
             this.dgvStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStudent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.GenderType,
+            this.FullName,
             this.FirstName,
             this.LastName,
             this.NationalCode,
-            this.Gender});
+            this.Grade,
+            this.StudentCode});
             this.dgvStudent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvStudent.Location = new System.Drawing.Point(0, 0);
             this.dgvStudent.Margin = new System.Windows.Forms.Padding(4);
@@ -141,14 +143,13 @@
             this.dgvStudent.Size = new System.Drawing.Size(804, 518);
             this.dgvStudent.TabIndex = 0;
             // 
-            // GenderType
+            // FullName
             // 
-            this.GenderType.DataPropertyName = "GenderType";
-            this.GenderType.HeaderText = "gendertype";
-            this.GenderType.MinimumWidth = 6;
-            this.GenderType.Name = "GenderType";
-            this.GenderType.Visible = false;
-            this.GenderType.Width = 125;
+            this.FullName.DataPropertyName = "FullName";
+            this.FullName.HeaderText = "FullName";
+            this.FullName.MinimumWidth = 6;
+            this.FullName.Name = "FullName";
+            this.FullName.Width = 125;
             // 
             // FirstName
             // 
@@ -159,6 +160,7 @@
             this.FirstName.ReadOnly = true;
             this.FirstName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.FirstName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.FirstName.Visible = false;
             this.FirstName.Width = 125;
             // 
             // LastName
@@ -170,6 +172,7 @@
             this.LastName.ReadOnly = true;
             this.LastName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.LastName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.LastName.Visible = false;
             this.LastName.Width = 125;
             // 
             // NationalCode
@@ -183,16 +186,21 @@
             this.NationalCode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.NationalCode.Width = 125;
             // 
-            // Gender
+            // Grade
             // 
-            this.Gender.DataPropertyName = "Gender";
-            this.Gender.HeaderText = "Gender";
-            this.Gender.MinimumWidth = 6;
-            this.Gender.Name = "Gender";
-            this.Gender.ReadOnly = true;
-            this.Gender.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Gender.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Gender.Width = 125;
+            this.Grade.DataPropertyName = "Grade";
+            this.Grade.HeaderText = "Grade";
+            this.Grade.MinimumWidth = 6;
+            this.Grade.Name = "Grade";
+            this.Grade.Width = 125;
+            // 
+            // StudentCode
+            // 
+            this.StudentCode.DataPropertyName = "StudentCode";
+            this.StudentCode.HeaderText = "StudentCode";
+            this.StudentCode.MinimumWidth = 6;
+            this.StudentCode.Name = "StudentCode";
+            this.StudentCode.Width = 125;
             // 
             // FrmDisplay
             // 
@@ -223,11 +231,12 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridView dgvStudent;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GenderType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn NationalCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gender;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Grade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StudentCode;
     }
 }
 

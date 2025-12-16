@@ -9,26 +9,34 @@ namespace Tamrin_c__pro
 {
     public class DataManager
     {
-       static List<Student>  students;
+       static List<Student> student;
        
         public DataManager()
         {
-            if (students == null)
-            students = new List<Student>();          
+            if (student == null)
+                student = new List<Student>();          
         }
         
-        public void Add(Student student)
-        { 
-            students.Add(student);
+        public void Add(Student _student)
+        {
+            student.Add(_student);
         }
         public void RemoveAt(int index)
-        { 
-            students.RemoveAt(index);
+        {
+            student.RemoveAt(index);
         }
         public IReadOnlyList<Student> GetStudents()
         {
-            return students;
+            return student;
+        }
+        public bool SearchStudent(string key)
+        {
+            if (student.FirstOrDefault(p => p.StudentCode == key) == null)
+                return true;
+
+           return false;    
         }
         
+
     }
 }

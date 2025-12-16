@@ -60,7 +60,7 @@
     <Compile Include="FrmDisplay.Designer.cs">
       <DependentUpon>FrmDisplay.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gender.cs" />
+    <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />

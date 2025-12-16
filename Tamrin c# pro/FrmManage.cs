@@ -14,60 +14,77 @@ namespace Tamrin_c__pro
     public partial class FrmManage : Form
     {
         DataManager dataManager;
-        bool IsEdit = false;
-        public Student Student { get; set; }
+        public Student Information { get; set; }
+        public event Action InsertUser;
         public FrmManage()
         {
             InitializeComponent();
             dataManager = new DataManager();
-            
+           
         }
-
-        public void FillStudent()
+        private void FrmManage_Load(object sender, EventArgs e)
         {
-            if (Student != null) 
-                IsEdit = true;
-
-            Student.FirstName = txtFirstName.Text;
-            Student.LastName = txtLastName.Text;
-            Student.NationalCode = txtNationalCode.Text;
-
-            if (chkMale.Checked)
-                Student.GenderType = Genders.Male;
-
-            else if (chkFemale.Checked)
-
-                Student.GenderType = Genders.Female;
-
-            else
-                Student.GenderType = Genders.UnKnow;
-            
-            bool check = Student.Validation();
+            if (Information != null)
+            {
+                btnEntry.Text = "Save";
+                btnNewStudent.Visible = false;
+            }
+        }
+        bool FillProp()
+        {
+            Information.FirstName = txtFirstName.Text;
+            Information.LastName = txtLastName.Text;
+            Information.NationalCode = txtNationalCode.Text;
+            Information.Grade = (string)cbxGrade.SelectedItem;
+            Information.StudentCode = txtStudentCode.Text;
+            return Information.Validation(); 
+        }
+        public bool Add()
+        {
+            Information = new Student();
+            bool check = FillProp();
+            if (check)
+            {
+                dataManager.Add(Information);
+                return true;
+            }
+            else         
+                AlertHelp.Alert();
+            return  false;
+        }
+        private void Edit()
+        {
+            bool check = FillProp();
             if (!check)
                 AlertHelp.Alert();
-        } 
+             else
+                DialogResult = DialogResult.OK; 
+                
+
+        }
         private void btnEntry_Click(object sender, EventArgs e)
         {
-                  FillStudent();
-                if (IsEdit==false )
+            if (Information == null)
             {
-                dataManager.Add(Student);          
-                this.Close();
+                if (Add())
+                    DialogResult = DialogResult.OK;
+               
             }
-            DialogResult = DialogResult.OK;
+            else
+                Edit();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnNewStudent_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (Add())
+            {
+                InsertUser();
+                cbxGrade.SelectedItem = txtFirstName.Text =
+                txtLastName.Text = txtNationalCode.Text =
+                txtStudentCode.Text = null;
+            }
         }
-        private void chkMale_Click(object sender, EventArgs e)
-        {
-            chkFemale.Checked = false;
-        }
-        private void chkFemale_Click(object sender, EventArgs e)
-        {
-            chkMale.Checked = false;
-        }
+
+        
     }
 }

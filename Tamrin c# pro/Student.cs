@@ -10,36 +10,30 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Tamrin_c__pro
 {
-    public class Student
+    public class Student : Person
     {
-        DataManager dataManager= new DataManager();
-        
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string NationalCode { get; set; }
-        public Genders GenderType { get; set; }
-        public string Gender 
+        DataManager dataManager;
+        public Student()
+        {
+            dataManager = new DataManager();    
+        }
+        public string StudentCode { get; set; }
+        public string Grade { get; set; }
+        public override string FullName
         {
             get
             {
-                switch (GenderType)
-                {
-                    case Genders.Male:
-                        return  "اقا";
-                    case Genders.Female:
-                        return "خانم";
-                    default:
-                        return "نامشخص";
-
-                }
+                return FirstName + "" + LastName + " " + Grade;
+            
+            
             }
         }
-       
-
-        public bool Validation()
+        public override string ToString()
         {
-
-
+            return FirstName + " " + LastName + " " + Grade + " " + StudentCode;
+        }
+        public override bool Validation()
+        {
             if (FirstName.Length < 3)
             {
                 AlertHelp.Message = "اسم نمیتواند کمتر از 3 حرف باشد";
@@ -50,17 +44,29 @@ namespace Tamrin_c__pro
                 AlertHelp.Message = "کد ملی نمیتواند کمتر از 10 حرف باشد";
                 AlertHelp.Text = "ErorNationalCode";
             }
-            
+            else if (StudentCode.Length < 4)
+            {
+                AlertHelp.Message = "کد دانش اموزی نمیتواند کمتر از 4 حرف باشد";
+                AlertHelp.Text = "ErorStudentCode";
+            }
+            else if (!dataManager.SearchStudent(StudentCode))
+            {
+                AlertHelp.Message = "کد دانش اموزی از قبل وجود دارد";
+                AlertHelp.Text = "ErorNationalCode";
+            }
+            else if (Grade == null)
+            {
+                AlertHelp.Message = "لطفا یک مقطع تحصیلی را انتخاب کنید";
+                AlertHelp.Text = "ErorGrade";
+            }          
             else
                 return true;
-            
+
             AlertHelp.Button = MessageBoxButtons.OK;
             AlertHelp.Icon = MessageBoxIcon.Error;
             return false;
         }
 
-       
-        
 
     }
 }
