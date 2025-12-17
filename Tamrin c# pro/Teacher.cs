@@ -9,9 +9,14 @@ namespace Tamrin_c__pro
 {
     public class Teacher : Person
     {
+        ManageTeacher manageTeacher;
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public string Field { get; set; }
+        public Teacher()
+        {
+            manageTeacher = new ManageTeacher();    
+        }
         public override bool Validation()
         {
             if (FirstName.Length < 3)
@@ -33,6 +38,11 @@ namespace Tamrin_c__pro
             {
                 AlertHelp.Message = "شماره تلفن نمیتواند کمتر از 11 حرف باشد";
                 AlertHelp.Text = "ErorPhoneNumber";
+            }
+            else if (!manageTeacher.SearchTeacher(PhoneNumber,NationalCode))
+            {
+                AlertHelp.Message = "معلم با این مشخصات از قبل وجود دارد";
+                AlertHelp.Text = "ErorNationalCode";
             }
             else
                 return true;

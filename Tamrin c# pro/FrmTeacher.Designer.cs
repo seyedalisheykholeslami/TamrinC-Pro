@@ -105,6 +105,7 @@
             this.btnNewStudent.TabIndex = 43;
             this.btnNewStudent.Text = "Entry New Teacher";
             this.btnNewStudent.UseVisualStyleBackColor = true;
+            this.btnNewStudent.Click += new System.EventHandler(this.btnNewStudent_Click);
             // 
             // btnEntry
             // 

@@ -47,7 +47,9 @@ namespace Tamrin_c__pro
             if (check)
             {
                 manageTeacher.Add(Information);
+                Information = null;
                 return true;
+                
             }
             else
                 AlertHelp.Alert();
@@ -69,7 +71,7 @@ namespace Tamrin_c__pro
             {
                 if (Add())
                     DialogResult = DialogResult.OK;
-                Information = null;
+                
             }
             else
                 Edit();

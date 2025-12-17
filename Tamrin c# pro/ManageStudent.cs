@@ -32,10 +32,10 @@ namespace Tamrin_c__pro
         }
         public bool SearchStudent(string key)
         {
-            if (student.FirstOrDefault(p => p.StudentCode == key) == null)
+            if (student.FirstOrDefault(p => p.StudentCode == key) != null)
+                return false;
+            else
                 return true;
-
-           return false;    
         }
         
 

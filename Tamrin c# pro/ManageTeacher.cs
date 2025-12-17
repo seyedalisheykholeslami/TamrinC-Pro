@@ -29,11 +29,11 @@ namespace Tamrin_c__pro
         }
         public bool SearchTeacher(string number,string code)
         {
-            if (teacher.FirstOrDefault(p => p.PhoneNumber == number) == null)
-                if (teacher.FirstOrDefault(p => p.NationalCode == code) == null)
+            if (teacher.FirstOrDefault(p => p.PhoneNumber == number) != null
+                && teacher.FirstOrDefault(p => p.NationalCode == code) != null)
+                    return false;
+               else
                     return true;
-
-            return false;
         }
 
 
