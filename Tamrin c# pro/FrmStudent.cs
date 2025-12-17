@@ -11,15 +11,15 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Tamrin_c__pro
 {
-    public partial class FrmManage : Form
+    public partial class FrmStudent : Form
     {
-        DataManager dataManager;
+        ManageStudent dataManager;
         public Student Information { get; set; }
         public event Action InsertUser;
-        public FrmManage()
+        public FrmStudent()
         {
             InitializeComponent();
-            dataManager = new DataManager();
+            dataManager = new ManageStudent();
            
         }
         private void FrmManage_Load(object sender, EventArgs e)
@@ -85,6 +85,6 @@ namespace Tamrin_c__pro
             }
         }
 
-        
+       
     }
 }

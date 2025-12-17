@@ -12,10 +12,10 @@ namespace Tamrin_c__pro
 {
     public class Student : Person
     {
-        DataManager dataManager;
+        ManageStudent dataManager;
         public Student()
         {
-            dataManager = new DataManager();    
+            dataManager = new ManageStudent();    
         }
         public string StudentCode { get; set; }
         public string Grade { get; set; }

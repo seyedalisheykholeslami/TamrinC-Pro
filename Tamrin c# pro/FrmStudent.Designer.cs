@@ -1,6 +1,6 @@
 ﻿namespace Tamrin_c__pro
 {
-    partial class FrmManage
+    partial class FrmStudent
     {
         /// <summary>
         /// Required designer variable.
@@ -44,7 +44,7 @@
             // 
             // btnNewStudent
             // 
-            this.btnNewStudent.Location = new System.Drawing.Point(104, 228);
+            this.btnNewStudent.Location = new System.Drawing.Point(107, 221);
             this.btnNewStudent.Name = "btnNewStudent";
             this.btnNewStudent.Size = new System.Drawing.Size(183, 35);
             this.btnNewStudent.TabIndex = 6;
@@ -54,7 +54,7 @@
             // 
             // btnEntry
             // 
-            this.btnEntry.Location = new System.Drawing.Point(12, 228);
+            this.btnEntry.Location = new System.Drawing.Point(15, 221);
             this.btnEntry.Name = "btnEntry";
             this.btnEntry.Size = new System.Drawing.Size(86, 35);
             this.btnEntry.TabIndex = 5;
@@ -70,6 +70,7 @@
             this.lblNationalCode.Size = new System.Drawing.Size(131, 25);
             this.lblNationalCode.TabIndex = 32;
             this.lblNationalCode.Text = "NationalCode";
+            
             // 
             // lblLastName
             // 
@@ -79,6 +80,7 @@
             this.lblLastName.Size = new System.Drawing.Size(101, 25);
             this.lblLastName.TabIndex = 31;
             this.lblLastName.Text = "LastName";
+            
             // 
             // lblFirstName
             // 
@@ -88,6 +90,7 @@
             this.lblFirstName.Size = new System.Drawing.Size(101, 25);
             this.lblFirstName.TabIndex = 30;
             this.lblFirstName.Text = "FirstName";
+           
             // 
             // txtNationalCode
             // 
@@ -96,6 +99,7 @@
             this.txtNationalCode.Name = "txtNationalCode";
             this.txtNationalCode.Size = new System.Drawing.Size(148, 30);
             this.txtNationalCode.TabIndex = 2;
+           
             // 
             // txtLastName
             // 
@@ -138,6 +142,7 @@
             this.txtStudentCode.Name = "txtStudentCode";
             this.txtStudentCode.Size = new System.Drawing.Size(148, 30);
             this.txtStudentCode.TabIndex = 4;
+       
             // 
             // cbxGrade
             // 
@@ -153,12 +158,13 @@
             this.cbxGrade.Name = "cbxGrade";
             this.cbxGrade.Size = new System.Drawing.Size(148, 33);
             this.cbxGrade.TabIndex = 3;
+     
             // 
-            // FrmManage
+            // FrmStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(299, 273);
+            this.ClientSize = new System.Drawing.Size(304, 272);
             this.Controls.Add(this.cbxGrade);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
@@ -173,8 +179,8 @@
             this.Controls.Add(this.txtNationalCode);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "FrmManage";
-            this.Text = "Form1";
+            this.Name = "FrmStudent";
+            this.Text = "Student";
             this.Load += new System.EventHandler(this.FrmManage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

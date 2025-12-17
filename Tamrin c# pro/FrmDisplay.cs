@@ -12,33 +12,56 @@ namespace Tamrin_c__pro
 {
     public partial class FrmDisplay : Form
     {
-        DataManager dataManager;
-        
+        ManageStudent manageStudent;
+        ManageTeacher manageTeacher;
         public FrmDisplay()
         {
             InitializeComponent();
-            dataManager = new DataManager();
-             
+            manageStudent = new ManageStudent();
+            manageTeacher = new ManageTeacher();
+            cmbSelectUser.SelectedIndex = 0;
         }
+
         private void FillDGV()
         {
-            dgvStudent.DataSource = dataManager.GetStudents().ToList();
+            if (cmbSelectUser.SelectedIndex == 0)
+                dgvStudent.DataSource = manageTeacher.GetStudents().ToList();
+
+            else if (cmbSelectUser.SelectedIndex == 1)
+                dgvStudent.DataSource = manageStudent.GetStudents().ToList();
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            FrmManage frmManage = new FrmManage();
-            
-            frmManage.InsertUser += FillDGV;
-            if (frmManage.ShowDialog() == DialogResult.OK)
-                FillDGV();
+            if (cmbSelectUser.SelectedIndex == 0)
+            {
+                FrmTeacher frmTeacher = new FrmTeacher();
+                frmTeacher.InsertUser += FillDGV;
+                if (frmTeacher.ShowDialog() == DialogResult.OK)
+                    FillDGV();
+            }
+            else if (cmbSelectUser.SelectedIndex == 1)
+            {
+                FrmStudent frmStudent = new FrmStudent();
+                frmStudent.InsertUser += FillDGV;
+                if (frmStudent.ShowDialog() == DialogResult.OK)
+                    FillDGV();
+            }
         }
-        
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dgvStudent.CurrentRow.Index >= 0)
             {
-                dataManager.RemoveAt(dgvStudent.CurrentRow.Index);
-                FillDGV();
+                if (cmbSelectUser.SelectedIndex == 0)
+                {
+                    manageTeacher.RemoveAt(dgvStudent.CurrentRow.Index);
+                    FillDGV();
+                }
+                else if (cmbSelectUser.SelectedIndex == 1)
+                {
+                    manageStudent.RemoveAt(dgvStudent.CurrentRow.Index);
+                    FillDGV();
+                }
             }
             else
             {
@@ -52,14 +75,24 @@ namespace Tamrin_c__pro
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            
+
             if (dgvStudent.CurrentRow.Index >= 0)
             {
-                FrmManage frmManage = new FrmManage();
-                frmManage.Information = dgvStudent.CurrentRow.DataBoundItem as Student;
-                frmManage.ShowDialog();
+                if (cmbSelectUser.SelectedIndex == 0)
+                {
+                    FrmTeacher frmTeacher = new FrmTeacher();
+                    frmTeacher.Information = dgvStudent.CurrentRow.DataBoundItem as Teacher;
+                    frmTeacher.ShowDialog();
+
+                }
+                else if (cmbSelectUser.SelectedIndex == 1)
+                {
+                    FrmStudent frmStudent = new FrmStudent();
+                    frmStudent.Information = dgvStudent.CurrentRow.DataBoundItem as Student;
+                    frmStudent.ShowDialog();
+                }
             }
-            else 
+            else
             {
                 AlertHelp.Message = "لطفا یک سطر را انتخاب کنید";
                 AlertHelp.Text = "SelectRow";
@@ -67,6 +100,12 @@ namespace Tamrin_c__pro
                 AlertHelp.Icon = MessageBoxIcon.Warning;
                 AlertHelp.Alert();
             }
+        }
+
+
+        private void cmbSelectUser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FillDGV();
         }
     }
 }

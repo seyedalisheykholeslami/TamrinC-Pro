@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace Tamrin_c__pro
 {
-    public class DataManager
+    public class ManageStudent
     {
        static List<Student> student;
+        
        
-        public DataManager()
+        public ManageStudent()
         {
             if (student == null)
                 student = new List<Student>();          
