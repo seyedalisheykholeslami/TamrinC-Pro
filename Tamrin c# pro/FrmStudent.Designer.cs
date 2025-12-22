@@ -39,7 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtStudentCode = new System.Windows.Forms.TextBox();
-            this.cbxGrade = new System.Windows.Forms.ComboBox();
+            this.cbmGrade = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnNewStudent
@@ -70,7 +70,6 @@
             this.lblNationalCode.Size = new System.Drawing.Size(131, 25);
             this.lblNationalCode.TabIndex = 32;
             this.lblNationalCode.Text = "NationalCode";
-            
             // 
             // lblLastName
             // 
@@ -80,7 +79,6 @@
             this.lblLastName.Size = new System.Drawing.Size(101, 25);
             this.lblLastName.TabIndex = 31;
             this.lblLastName.Text = "LastName";
-            
             // 
             // lblFirstName
             // 
@@ -90,7 +88,6 @@
             this.lblFirstName.Size = new System.Drawing.Size(101, 25);
             this.lblFirstName.TabIndex = 30;
             this.lblFirstName.Text = "FirstName";
-           
             // 
             // txtNationalCode
             // 
@@ -99,7 +96,6 @@
             this.txtNationalCode.Name = "txtNationalCode";
             this.txtNationalCode.Size = new System.Drawing.Size(148, 30);
             this.txtNationalCode.TabIndex = 2;
-           
             // 
             // txtLastName
             // 
@@ -142,30 +138,28 @@
             this.txtStudentCode.Name = "txtStudentCode";
             this.txtStudentCode.Size = new System.Drawing.Size(148, 30);
             this.txtStudentCode.TabIndex = 4;
-       
             // 
-            // cbxGrade
+            // cbmGrade
             // 
-            this.cbxGrade.FormattingEnabled = true;
-            this.cbxGrade.Items.AddRange(new object[] {
+            this.cbmGrade.FormattingEnabled = true;
+            this.cbmGrade.Items.AddRange(new object[] {
             "هفتم",
             "هشتم",
             "نهم",
             "دهم",
             "یازدهم",
             "دوازدهم"});
-            this.cbxGrade.Location = new System.Drawing.Point(13, 130);
-            this.cbxGrade.Name = "cbxGrade";
-            this.cbxGrade.Size = new System.Drawing.Size(148, 33);
-            this.cbxGrade.TabIndex = 3;
-     
+            this.cbmGrade.Location = new System.Drawing.Point(13, 130);
+            this.cbmGrade.Name = "cbmGrade";
+            this.cbmGrade.Size = new System.Drawing.Size(148, 33);
+            this.cbmGrade.TabIndex = 3;
             // 
             // FrmStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(304, 272);
-            this.Controls.Add(this.cbxGrade);
+            this.Controls.Add(this.cbmGrade);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtStudentCode);
@@ -199,6 +193,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtStudentCode;
-        private System.Windows.Forms.ComboBox cbxGrade;
+        private System.Windows.Forms.ComboBox cbmGrade;
     }
 }

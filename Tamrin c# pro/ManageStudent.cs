@@ -9,35 +9,47 @@ namespace Tamrin_c__pro
 {
     public class ManageStudent
     {
-       static List<Student> student;
+       static List<Student> students;
         
        
         public ManageStudent()
         {
-            if (student == null)
-                student = new List<Student>();          
+            if (students == null)
+                students = new List<Student>();          
         }
         
-        public void Add(Student _student)
+        public void Add(Student student)
         {
-            student.Add(_student);
+            students.Add(student);
         }
         public void RemoveAt(int index)
         {
-            student.RemoveAt(index);
+            students.RemoveAt(index);
         }
         public IReadOnlyList<Student> GetStudents()
         {
-            return student;
+            return students;
         }
-        public bool SearchStudent(string key)
+        public Student SearchStudent(string key)
         {
-            if (student.FirstOrDefault(p => p.StudentCode == key) != null)
-                return false;
-            else
-                return true;
+            var student = students.FirstOrDefault(p => p.NationalCode == key);
+                if (student != null)
+                    return new Student()
+                    {
+                        FirstName = student.FirstName,
+                        LastName = student.LastName,
+                        NationalCode = student.NationalCode,
+                        StudentCode = student.StudentCode,
+                        Grade = student.Grade
+                    };
+            return null;
         }
-        
+        public void Update(Student student)
+        {
+            var isFound = students.FirstOrDefault(p => p.NationalCode == student.NationalCode);
+            isFound = student;
+
+        }
 
     }
 }

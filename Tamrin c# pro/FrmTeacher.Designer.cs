@@ -34,7 +34,7 @@
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.txtFirstName = new System.Windows.Forms.TextBox();
-            this.btnNewStudent = new System.Windows.Forms.Button();
+            this.btnNewTeacher = new System.Windows.Forms.Button();
             this.btnEntry = new System.Windows.Forms.Button();
             this.lblNationalCode = new System.Windows.Forms.Label();
             this.lblLastName = new System.Windows.Forms.Label();
@@ -97,15 +97,15 @@
             this.txtFirstName.Size = new System.Drawing.Size(148, 30);
             this.txtFirstName.TabIndex = 37;
             // 
-            // btnNewStudent
+            // btnNewTeacher
             // 
-            this.btnNewStudent.Location = new System.Drawing.Point(103, 319);
-            this.btnNewStudent.Name = "btnNewStudent";
-            this.btnNewStudent.Size = new System.Drawing.Size(189, 35);
-            this.btnNewStudent.TabIndex = 43;
-            this.btnNewStudent.Text = "Entry New Teacher";
-            this.btnNewStudent.UseVisualStyleBackColor = true;
-            this.btnNewStudent.Click += new System.EventHandler(this.btnNewStudent_Click);
+            this.btnNewTeacher.Location = new System.Drawing.Point(103, 319);
+            this.btnNewTeacher.Name = "btnNewTeacher";
+            this.btnNewTeacher.Size = new System.Drawing.Size(189, 35);
+            this.btnNewTeacher.TabIndex = 43;
+            this.btnNewTeacher.Text = "Entry New Teacher";
+            this.btnNewTeacher.UseVisualStyleBackColor = true;
+            this.btnNewTeacher.Click += new System.EventHandler(this.btnNewStudent_Click);
             // 
             // btnEntry
             // 
@@ -183,7 +183,7 @@
             this.Controls.Add(this.txtPhoneNumber);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.txtFirstName);
-            this.Controls.Add(this.btnNewStudent);
+            this.Controls.Add(this.btnNewTeacher);
             this.Controls.Add(this.btnEntry);
             this.Controls.Add(this.lblNationalCode);
             this.Controls.Add(this.lblLastName);
@@ -207,7 +207,7 @@
         private System.Windows.Forms.TextBox txtPhoneNumber;
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.TextBox txtFirstName;
-        private System.Windows.Forms.Button btnNewStudent;
+        private System.Windows.Forms.Button btnNewTeacher;
         private System.Windows.Forms.Button btnEntry;
         private System.Windows.Forms.Label lblNationalCode;
         private System.Windows.Forms.Label lblLastName;

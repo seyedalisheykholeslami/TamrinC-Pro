@@ -17,39 +17,62 @@ namespace Tamrin_c__pro
         {
             manageTeacher = new ManageTeacher();    
         }
-        public override bool Validation()
+        public override OperationResult Validation(bool edit)
         {
+
             if (FirstName.Length < 3)
             {
-                AlertHelp.Message = "اسم نمیتواند کمتر از 3 حرف باشد";
-                AlertHelp.Text = "ErorName";
+                return new OperationResult()
+                {
+                    Message = "اسم نمیتواند کمتر از 3 حرف باشد",
+                    Text = "ErorName",
+                    IsSuccess = false,
+                };
             }
             else if (NationalCode.Length < 10)
             {
-                AlertHelp.Message = "کد ملی نمیتواند کمتر از 10 حرف باشد";
-                AlertHelp.Text = "ErorNationalCode";
+                return new OperationResult()
+                {
+                    Message = "کد ملی نمیتواند کمتر از 10 حرف باشد",
+                    Text = "ErorNationalCode",
+                    IsSuccess = false
+                };
+
             }
             else if (Field == null)
             {
-                AlertHelp.Message = "لطفا یک رشته را انتخاب کنید";
-                AlertHelp.Text = "ErorField";
+                return new OperationResult()
+                {
+                    Message = "لطفا یک رشته را انتخاب کنید",
+                    Text = "ErorField",
+                    IsSuccess = false
+                };
             }
             else if (PhoneNumber.Length < 11)
             {
-                AlertHelp.Message = "شماره تلفن نمیتواند کمتر از 11 حرف باشد";
-                AlertHelp.Text = "ErorPhoneNumber";
+                return new OperationResult()
+                {
+                    Message = "شماره تلفن نمیتواند کمتر از 11 حرف باشد",
+                    Text = "ErorPhoneNumber",
+                    IsSuccess = false
+                };
             }
-            else if (!manageTeacher.SearchTeacher(PhoneNumber,NationalCode))
+            else if (!edit && manageTeacher.SearchTeacher(NationalCode) != null)
             {
-                AlertHelp.Message = "معلم با این مشخصات از قبل وجود دارد";
-                AlertHelp.Text = "ErorNationalCode";
+                return new OperationResult()
+                {
+                    Message = "معلم با این مشخصات از قبل وجود دارد",
+                    Text = "ErorNationalCode",
+                    IsSuccess = false
+                };
             }
             else
-                return true;
-
-            AlertHelp.Button = MessageBoxButtons.OK;
-            AlertHelp.Icon = MessageBoxIcon.Error;
-            return false;
+                return new OperationResult()
+                {
+                    Message = "اطلاعات با موفقیت ثبت شد",
+                    Text = "Success",
+                    IsSuccess = true,
+                };
         }
 
 

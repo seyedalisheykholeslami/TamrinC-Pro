@@ -13,62 +13,87 @@ namespace Tamrin_c__pro
 {
     public partial class FrmStudent : Form
     {
-        ManageStudent dataManager;
-        public Student Information { get; set; }
+        Student information;
+        ManageStudent manageStudent;
+        AlertHelp alertHelp;
+        public string _nationalCode;
         public event Action InsertUser;
         public FrmStudent()
         {
             InitializeComponent();
-            dataManager = new ManageStudent();
-           
+            manageStudent = new ManageStudent();
+           alertHelp = new AlertHelp();
         }
         private void FrmManage_Load(object sender, EventArgs e)
         {
-            if (Information != null)
+            if (_nationalCode != null)
             {
-                btnEntry.Text = "Save";
                 btnNewStudent.Visible = false;
+                btnEntry.Text = "Save";
+                information = manageStudent.SearchStudent(_nationalCode);
+                txtFirstName.Text = information.FirstName;
+                txtLastName.Text = information.LastName;
+                txtNationalCode.Text = information.NationalCode;
+                txtStudentCode.Text = information.StudentCode;
+                cbmGrade.SelectedItem = information.Grade;
+                txtNationalCode.Enabled = false;
             }
         }
-        bool FillProp()
+        OperationResult FillProp(bool edit)
         {
-            Information.FirstName = txtFirstName.Text;
-            Information.LastName = txtLastName.Text;
-            Information.NationalCode = txtNationalCode.Text;
-            Information.Grade = (string)cbxGrade.SelectedItem;
-            Information.StudentCode = txtStudentCode.Text;
-            return Information.Validation(); 
+            information.FirstName = txtFirstName.Text;
+            information.LastName = txtLastName.Text;
+            information.NationalCode = txtNationalCode.Text;
+            information.Grade = (string)cbmGrade.SelectedItem;
+            information.StudentCode = txtStudentCode.Text;
+            return information.Validation(edit); 
         }
         public bool Add()
         {
-            Information = new Student();
-            bool check = FillProp();
-            if (check)
+            bool status = false;
+            information = new Student();
+            OperationResult check = FillProp(false);
+            if (check.IsSuccess)
             {
-                dataManager.Add(Information);
-                return true;
+                manageStudent.Add(information);
+                alertHelp.Icon = MessageBoxIcon.Information;
+                status = true;
             }
-            else         
-                AlertHelp.Alert();
-            return  false;
+            else
+                alertHelp.Icon = MessageBoxIcon.Error;
+
+            alertHelp.Message = check.Message;
+            alertHelp.Text = check.Text;
+            alertHelp.Alert();
+            return status;
         }
         private void Edit()
         {
-            bool check = FillProp();
-            if (!check)
-                AlertHelp.Alert();
-             else
-                DialogResult = DialogResult.OK; 
-                
+            OperationResult check = FillProp(true);
+            if (check.IsSuccess)
+            {
+                manageStudent.Update(information);
+                information = null;
+                _nationalCode = null;
+                alertHelp.Icon = MessageBoxIcon.Information;
+                DialogResult = DialogResult.OK;
+            }
+            else
+                alertHelp.Icon = MessageBoxIcon.Error;
+            
+                alertHelp.Message = check.Message;
+                alertHelp.Text = check.Text;
+                alertHelp.Alert();
+            
+
 
         }
         private void btnEntry_Click(object sender, EventArgs e)
         {
-            if (Information == null)
+            if (information == null)
             {
                 if (Add())
                     DialogResult = DialogResult.OK;
-               
             }
             else
                 Edit();
@@ -79,7 +104,7 @@ namespace Tamrin_c__pro
             if (Add())
             {
                 InsertUser();
-                cbxGrade.SelectedItem = txtFirstName.Text =
+                cbmGrade.SelectedItem = txtFirstName.Text =
                 txtLastName.Text = txtNationalCode.Text =
                 txtStudentCode.Text = null;
             }

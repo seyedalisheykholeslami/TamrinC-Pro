@@ -12,72 +12,98 @@ namespace Tamrin_c__pro
 {
     public partial class FrmTeacher : Form
     {
+        Teacher information;
         ManageTeacher manageTeacher;
-        public Teacher Information { get; set; }
+        AlertHelp alertHelp;
+        public string _nationalCode = null;
         public event Action InsertUser;
         public FrmTeacher()
         {
             InitializeComponent();
             manageTeacher = new ManageTeacher();
+            alertHelp = new AlertHelp();
+            alertHelp.Button = MessageBoxButtons.OK;
+            alertHelp.Icon = MessageBoxIcon.Error;
         }
 
 
         private void FrmManage_Load(object sender, EventArgs e)
         {
-            if (Information != null)
+            if (_nationalCode != null)
             {
+
+                btnNewTeacher.Visible = false;
                 btnEntry.Text = "Save";
-                btnNewStudent.Visible = false;
+                information =  manageTeacher.SearchTeacher(_nationalCode);
+                txtFirstName.Text = information.FirstName;  
+                txtLastName.Text = information.LastName;
+                txtNationalCode.Text = information.NationalCode;
+                txtPhoneNumber.Text = information.PhoneNumber;
+                txtAddress.Text = information.Address;
+                cbmField.SelectedItem = information.Field;
+                txtNationalCode.Enabled = false;
             }
         }
-        bool FillProp()
+        OperationResult FillProp(bool edit)
         {
-            Information.FirstName = txtFirstName.Text;
-            Information.LastName = txtLastName.Text;
-            Information.NationalCode = txtNationalCode.Text;
-            Information.Field= (string)cbmField.SelectedItem;
-            Information.PhoneNumber = txtPhoneNumber.Text;
-            Information.Address =txtAddress.Text;   
-            return Information.Validation();
-        }
-        public bool Add()
-        {
-            Information = new Teacher();
-            bool check = FillProp();
-            if (check)
-            {
-                manageTeacher.Add(Information);
-                Information = null;
-                return true;
-                
-            }
-            else
-                AlertHelp.Alert();
-            return false;
-        }
-        private void Edit()
-        {
-            bool check = FillProp();
-            if (!check)
-                AlertHelp.Alert();
-            else
-                DialogResult = DialogResult.OK;
-
-
+            
+            information.FirstName = txtFirstName.Text;
+            information.LastName = txtLastName.Text;
+            information.NationalCode = txtNationalCode.Text;
+            information.Field= (string)cbmField.SelectedItem;
+            information.PhoneNumber = txtPhoneNumber.Text;
+            information.Address =txtAddress.Text;
+            return information.Validation(edit);
         }
         private void btnEntry_Click(object sender, EventArgs e)
         {
-            if (Information == null)
+            if (_nationalCode == null)
             {
                 if (Add())
                     DialogResult = DialogResult.OK;
-                
             }
             else
                 Edit();
-
-            
         }
+        public bool Add()
+        {
+            bool status = false;
+            information = new Teacher();
+            OperationResult check = FillProp(false);
+            if (check.IsSuccess)
+            {
+                manageTeacher.Add(information);
+                information = null;
+                alertHelp.Icon = MessageBoxIcon.Information;
+                status = true;
+            }
+            else
+                alertHelp.Icon = MessageBoxIcon.Error;
+            alertHelp.Message = check.Message;
+            alertHelp.Text = check.Text;
+            alertHelp.Alert();
+
+
+            return status;
+        }
+        private void Edit()
+        {
+            OperationResult check = FillProp(true);
+            if (check.IsSuccess)
+            {
+                manageTeacher.Update(information);
+                information = null;
+                _nationalCode = null;
+                DialogResult = DialogResult.OK;
+                alertHelp.Icon = MessageBoxIcon.Information;
+            }
+            else
+                alertHelp.Icon = MessageBoxIcon.Error;
+            alertHelp.Message = check.Message;
+            alertHelp.Text = check.Text;
+            alertHelp.Alert();
+        }
+        
 
         private void btnNewStudent_Click(object sender, EventArgs e)
         {

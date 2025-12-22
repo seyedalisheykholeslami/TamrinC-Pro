@@ -14,11 +14,13 @@ namespace Tamrin_c__pro
     {
         ManageStudent manageStudent;
         ManageTeacher manageTeacher;
+        AlertHelp alertHelp;
         public FrmDisplay()
         {
             InitializeComponent();
             manageStudent = new ManageStudent();
             manageTeacher = new ManageTeacher();
+            alertHelp = new AlertHelp();
             cmbSelectUser.SelectedIndex = 0;
         }
 
@@ -65,11 +67,11 @@ namespace Tamrin_c__pro
             }
             else
             {
-                AlertHelp.Message = "لطفا یک سطر را انتخاب کنید";
-                AlertHelp.Text = "SelectRow";
-                AlertHelp.Button = MessageBoxButtons.OK;
-                AlertHelp.Icon = MessageBoxIcon.Warning;
-                AlertHelp.Alert();
+                alertHelp.Message = "لطفا یک سطر را انتخاب کنید";
+                alertHelp.Text = "SelectRow";
+                alertHelp.Button = MessageBoxButtons.OK;
+                alertHelp.Icon = MessageBoxIcon.Warning;
+                alertHelp.Alert();
             }
         }
 
@@ -81,24 +83,26 @@ namespace Tamrin_c__pro
                 if (cmbSelectUser.SelectedIndex == 0)
                 {
                     FrmTeacher frmTeacher = new FrmTeacher();
-                    frmTeacher.Information = dgvStudent.CurrentRow.DataBoundItem as Teacher;
+                    var teacher = dgvStudent.CurrentRow.DataBoundItem as Teacher;
+                    frmTeacher._nationalCode = teacher.NationalCode;
                     frmTeacher.ShowDialog();
 
                 }
                 else if (cmbSelectUser.SelectedIndex == 1)
                 {
                     FrmStudent frmStudent = new FrmStudent();
-                    frmStudent.Information = dgvStudent.CurrentRow.DataBoundItem as Student;
+                    var student = dgvStudent.CurrentRow.DataBoundItem as Student;
+                    frmStudent._nationalCode = student.NationalCode;
                     frmStudent.ShowDialog();
                 }
             }
             else
             {
-                AlertHelp.Message = "لطفا یک سطر را انتخاب کنید";
-                AlertHelp.Text = "SelectRow";
-                AlertHelp.Button = MessageBoxButtons.OK;
-                AlertHelp.Icon = MessageBoxIcon.Warning;
-                AlertHelp.Alert();
+                alertHelp.Message = "لطفا یک سطر را انتخاب کنید";
+               alertHelp.Text = "SelectRow";
+               alertHelp.Button = MessageBoxButtons.OK;
+               alertHelp.Icon = MessageBoxIcon.Warning;
+               alertHelp.Alert();
             }
         }
 

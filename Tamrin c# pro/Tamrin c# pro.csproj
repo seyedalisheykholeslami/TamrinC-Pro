@@ -67,6 +67,7 @@
       <DependentUpon>FrmDisplay.cs</DependentUpon>
     </Compile>
     <Compile Include="ManageTeacher.cs" />
+    <Compile Include="OperationResult.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

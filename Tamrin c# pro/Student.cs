@@ -32,39 +32,60 @@ namespace Tamrin_c__pro
         {
             return FirstName + " " + LastName + " " + Grade + " " + StudentCode;
         }
-        public override bool Validation()
+        public override OperationResult Validation(bool edit)
         {
             if (FirstName.Length < 3)
             {
-                AlertHelp.Message = "اسم نمیتواند کمتر از 3 حرف باشد";
-                AlertHelp.Text = "ErorName";
+                return new OperationResult()
+                {
+                    Message = "اسم نمیتواند کمتر از 3 حرف باشد",
+                    Text = "ErorName",
+                    IsSuccess = false
+                };
             }
             else if (NationalCode.Length < 10)
             {
-                AlertHelp.Message = "کد ملی نمیتواند کمتر از 10 حرف باشد";
-                AlertHelp.Text = "ErorNationalCode";
+                return new OperationResult()
+                {
+                    Message = "کد ملی نمیتواند کمتر از 10 حرف باشد",
+                    Text = "ErorNationalCode",
+                    IsSuccess=false
+                };
             }
             else if (StudentCode.Length < 4)
             {
-                AlertHelp.Message = "کد دانش اموزی نمیتواند کمتر از 4 حرف باشد";
-                AlertHelp.Text = "ErorStudentCode";
+                return new OperationResult()
+                {
+                    Message = "کد دانش اموزی نمیتواند کمتر از 4 حرف باشد",
+                    Text = "ErorStudentCode",
+                    IsSuccess = false
+                };
             }
-            else if (!dataManager.SearchStudent(StudentCode))
+            else if (!edit && dataManager.SearchStudent(NationalCode)!=null)
             {
-                AlertHelp.Message = "کد دانش اموزی از قبل وجود دارد";
-                AlertHelp.Text = "ErorNationalCode";
+                return new OperationResult()
+                {
+                    Message = "کد دانش اموزی از قبل وجود دارد",
+                    Text = "ErorNationalCode",
+                    IsSuccess = false
+                };
             }
             else if (Grade == null)
             {
-                AlertHelp.Message = "لطفا یک مقطع تحصیلی را انتخاب کنید";
-                AlertHelp.Text = "ErorGrade";
-            }          
+                return new OperationResult()
+                {
+                    Message = "لطفا یک مقطع تحصیلی را انتخاب کنید",
+                    Text = "ErorGrade",
+                    IsSuccess = false
+                };
+            }
             else
-                return true;
-
-            AlertHelp.Button = MessageBoxButtons.OK;
-            AlertHelp.Icon = MessageBoxIcon.Error;
-            return false;
+                return new OperationResult()
+                {
+                    Message = "اطلاعات با موفقیت ثبت شد",
+                    Text = "Success",
+                    IsSuccess = true
+                };
         }
 
 

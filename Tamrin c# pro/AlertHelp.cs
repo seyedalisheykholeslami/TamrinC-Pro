@@ -8,13 +8,13 @@ using System.Windows.Forms;
 
 namespace Tamrin_c__pro
 {
-    public static class AlertHelp
+    public class AlertHelp
     {
-        public static string Text { get; set; }
-        public static string Message  { get; set; }
-        public static MessageBoxButtons Button { get; set; }
-        public static MessageBoxIcon Icon { get; set; }
-        public static void Alert()
+        public string Text { get; set; }
+        public string Message  { get; set; }
+        public MessageBoxButtons Button { get; set; }
+        public MessageBoxIcon Icon { get; set; }
+        public void Alert()
         {
             MessageBox.Show(Message,Text, Button,Icon);
         }

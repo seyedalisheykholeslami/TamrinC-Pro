@@ -8,34 +8,46 @@ namespace Tamrin_c__pro
 {
     public class ManageTeacher
     {
-        static List<Teacher> teacher;
+        static List<Teacher> teachers;
         public ManageTeacher()
         {
-            if (teacher == null)
-                teacher = new List<Teacher>();
+            if (teachers == null)
+                teachers= new List<Teacher>();
         }
 
-        public void Add(Teacher _teacher)
+        public void Add(Teacher teacher)
         {
-            teacher.Add(_teacher);
+            teachers.Add(teacher);
         }
         public void RemoveAt(int index)
         {
-            teacher.RemoveAt(index);
+            teachers.RemoveAt(index);
         }
         public IReadOnlyList<Teacher> GetStudents()
         {
-            return teacher;
+            return teachers;
         }
-        public bool SearchTeacher(string number,string code)
+        public Teacher SearchTeacher(string key)
         {
-            if (teacher.FirstOrDefault(p => p.PhoneNumber == number) != null
-                && teacher.FirstOrDefault(p => p.NationalCode == code) != null)
-                    return false;
-               else
-                    return true;
+            return teachers.FirstOrDefault(p => p.NationalCode == key);
+            //if (teacher != null)
+            //return new Teacher()
+            //{
+            //    FirstName = teacher.FirstName,
+            //    LastName = teacher.LastName,
+            //    NationalCode = teacher.NationalCode,
+            //    PhoneNumber = teacher.PhoneNumber,
+            //    Address = teacher.Address,
+            //    Field = teacher.Field,
+            //};
+            //return null;
         }
-
+        public void Update(Teacher teacher)
+        {
+            var isFind = teachers.IndexOf(teacher);
+            teachers[isFind]= teacher;
+        
+        }
 
     }
 }

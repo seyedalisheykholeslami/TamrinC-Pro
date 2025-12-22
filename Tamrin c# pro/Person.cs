@@ -20,27 +20,28 @@ namespace Tamrin_c__pro
                 return FirstName + " " + LastName;
             }
         }
-        public virtual bool Validation()
+        public virtual OperationResult Validation(bool edit)
         {
-
+            OperationResult result = new OperationResult();
 
             if (FirstName.Length < 3)
             {
-                AlertHelp.Message = "اسم نمیتواند کمتر از 3 حرف باشد";
-                AlertHelp.Text = "ErorName";
+                result.Message = "اسم نمیتواند کمتر از 3 حرف باشد";
+                result.Text = "ErorFirstName";
+                result.IsSuccess = true;
             }
             else if (NationalCode.Length < 10)
             {
-                AlertHelp.Message = "کد ملی نمیتواند کمتر از 10 حرف باشد";
-                AlertHelp.Text = "ErorNationalCode";
+                result.Message = "کد ملی نمیتواند کمتر از 10 حرف باشد";
+                result.Text = "ErorNationalCode";
+                result.IsSuccess = true;
             }
 
             else
-                return true;
+                result.IsSuccess = true ;
 
-            AlertHelp.Button = MessageBoxButtons.OK;
-            AlertHelp.Icon = MessageBoxIcon.Error;
-            return false;
+           
+            return result;
         }
     }
 }
